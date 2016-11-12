@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
+var math = require('./routes/math');
+
 var app = express();
 
 app.set("port", process.env.PORT || 3000);
@@ -11,6 +13,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // middleware for serving static files
 app.use(express.static('public'));
+
+app.use('/math', math);
 
 app.get('/', function(req, res){
   //console.log('Received a request at', new Date());
